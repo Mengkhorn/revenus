@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Redirecting...</title>
+<script>
+// Detect device and redirect
+function redirectUser() {
+const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+
+// iOS
+if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+window.location.href = "https://apps.apple.com/us/app/r-sm-app/id6755382976";
+return;
+}
+
+
+// Android
+if (/android/i.test(userAgent)) {
+window.location.href = "https://play.google.com/store/apps/details?id=kh.com.online.revenue.helpdesk";
+return;
+}
+
+
+// Default (fallback if neither iOS nor Android)
+document.getElementById("fallback").style.display = "block";
+}
+
+
+window.onload = redirectUser;
+</script>
+</head>
+<body>
+<p>Redirecting to the appropriate app store...</p>
+<div id="fallback" style="display:none; margin-top:20px;">
+<p>We could not detect your device. Please choose manually:</p>
+<ul>
+<li><a href="https://apps.apple.com/us/app/r-sm-app/id6755382976">Download on App Store (iOS)</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=kh.com.online.revenue.helpdesk">Get it on Google Play (Android)</a></li>
+</ul>
+</div>
+</body>
+</html>
